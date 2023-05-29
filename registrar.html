@@ -14,24 +14,26 @@
           <h1 class="h3 mb-3 fw-normal">CREAR CUENTA</h1>
       
           <div class="form-floating">
-            <input type="email" class="form-control m-2" id="floatingInput" placeholder="name@example.com">
+            <input type="email" class="form-control m-2" id="correo" placeholder="name@example.com">
             <label for="floatingInput">Email</label>
           </div>
           <div class="form-floating ">
-            <input type="password" class="form-control m-2" id="floatingPassword" placeholder="Password">
+            <input type="password" class="form-control m-2" id="password" placeholder="Password">
             <label for="floatingPassword">Contraseña</label>
           </div>
           <div class="form-floating ">
-            <input type="text" class="form-control m-2" id="floatingPassword" placeholder="Nombre">
+            <input type="text" class="form-control m-2" id="nombre" placeholder="Nombre">
             <label for="floatingPassword">Nombre</label>
           </div>
-          <button class="w-100 btn btn-lg btn-primary " type="submit">Crear Cuenta</button>
+          <button class="w-100 btn btn-lg btn-primary " type="submit" onclick="registrarUsuario()">Registrar</button>
               <a href="index.html" class="w-100 btn btn-lg btn-success my-3">Iniciar sesión</a>
               <p class="mt-5 mb.3 text-body-secondary">&copy;CECYTEM 2023</p>
            
           
         </div>
       </main>
+      <script src="js/funciones.js"></script>
+      <script src="js/appLogin.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/sweetalert2.all.min.js"></script>
 </body>
