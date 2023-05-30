@@ -46,7 +46,7 @@ const registrarUsuario=async()=>{
           return;
 
     }
-
+//Insertar a la BASE DE ATOS
     const datos=new FormData();
     datos.append("correo",correo);
     datos.append("password",password);
@@ -69,7 +69,77 @@ const registrarUsuario=async()=>{
           document.querySelector("#formRegistrar").reset();
           setTimeout(()=>{
             window.location.href="index.html";
-          },2000);
+          },10000);
+
+    }else{
+        Swal.fire({
+            icon: 'error',
+            title: 'ERROR',
+            text: resultado.mensaje,
+            footer: 'CRUD CONTACTOS'
+          })
+    }
+
+}
+
+const loginUsuario=async()=>{
+  var correo=document.querySelector("#correo").value;
+  var password=document.querySelector("#password").value;
+
+  if(correo.trim()===''||
+  password.trim()===''){
+      Swal.fire({
+          icon: 'error',
+          title: 'ERROR',
+          text: 'FALTA LLENAR CAMPOS!',
+          footer: 'CRUD CONTACTOS'
+        })
+        return;
+
+  }
+  if(!validarCorreo(correo)){
+      Swal.fire({
+          icon: 'error',
+          title: 'ERROR',
+          text: 'INTRODUCE UN CORREO VALIDO',
+          footer: 'CRUD CONTACTOS'
+        })
+        return;
+
+  }
+  if(!validarPassword(password)){
+      Swal.fire({
+          icon: 'error',
+          title: 'ERROR',
+          text: 'INTRODUCE UNA CONTRASEÑA VALIDA [Mayúsculas,minúsculas,números y min. 8 Carácteres]',
+          footer: 'CRUD CONTACTOS'
+        })
+        return;
+
+  }
+
+  const datos=new FormData();
+    datos.append("correo",correo);
+    datos.append("password",password);
+
+    var respuesta=await fetch("php/usuario/loginUsuario.php",{
+        method:'POST',
+        body:datos
+    });
+
+    var resultado=await respuesta.json();
+
+    if(resultado.success==true){
+        Swal.fire({
+            icon: 'success',
+            title: 'EXITO',
+            text: resultado.mensaje,
+            footer: 'CRUD CONTACTOS'
+          })
+          document.querySelector("#formRegistrar").reset();
+          setTimeout(()=>{
+            window.location.href="inicio.html";
+          },10000);
 
     }else{
         Swal.fire({
