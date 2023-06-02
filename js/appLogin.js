@@ -1,4 +1,15 @@
 
+var sesion=localStorage.getItem("nombre");
+
+const checarSesion=()=>{
+  if(sesion|=null){
+    window.location.href="inicio.html";
+  }
+}
+
+
+
+
 const registrarUsuario=async()=>{
     var correo=document.querySelector("#correo").value;
     var password=document.querySelector("#password").value;
@@ -136,10 +147,11 @@ const loginUsuario=async()=>{
             text: resultado.mensaje,
             footer: 'CRUD CONTACTOS'
           })
-          document.querySelector("#formRegistrar").reset();
+          document.querySelector("#formIniciar").reset();
+          localStorage.setItem("nombre",resultado.nombre);
           setTimeout(()=>{
             window.location.href="inicio.html";
-          },10000);
+          },2000);
 
     }else{
         Swal.fire({

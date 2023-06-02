@@ -2,7 +2,7 @@
 
 require_once '../config.php';
 
-$valido['success']=array('success'=>false,'mensaje'=>"");
+$valido['success']=array('success'=>false,'mensaje'=>"",'nombre'=>"");
 
 if($_POST){
     $correo=$_POST['correo'];
@@ -12,10 +12,10 @@ if($_POST){
     $resultado=$cx->query($sql);
     $n=$resultado->num_rows;
     if($n>0){
-        
-        
-            $valido['success']=true;
-            $valido['mensaje']="BIENVENIDO";
+        $row=$resultado->fetch_array();
+        $valido['success']=true;
+        $valido['mensaje']="BIENVENIDO ".strtoupper($row['nombre']);
+        $valido['nombre']=.strtoupper($row['nombre']);
 
          
     }else{
