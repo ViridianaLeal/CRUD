@@ -2,7 +2,7 @@
 var sesion=localStorage.getItem("nombre");
 
 const checarSesion=()=>{
-  if(sesion|=null){
+  if(sesion!=null){
     window.location.href="inicio.html";
   }
 }

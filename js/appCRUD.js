@@ -5,6 +5,7 @@ const checarSesion=()=>{
   if(sesion==null){
     window.location.href="index.html";
   }
+  document.querySelector("#usuario").innerHTML=sesion;
 }
 
 const cerrarSesion=()=>{

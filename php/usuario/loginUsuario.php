@@ -15,7 +15,7 @@ if($_POST){
         $row=$resultado->fetch_array();
         $valido['success']=true;
         $valido['mensaje']="BIENVENIDO ".strtoupper($row['nombre']);
-        $valido['nombre']=.strtoupper($row['nombre']);
+        $valido['nombre']=strtoupper($row['nombre']);
 
          
     }else{
