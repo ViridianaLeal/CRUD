@@ -119,6 +119,53 @@
     </div>
   </div>
 </div>
+
+<!--  editar contactoModal -->
+<div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">EDITAR CONTACTO</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <form id="formEditar">
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="enombre" placeholder="Nombre">
+        </div>
+        <div class="mb-3">
+          <label for="ap" class="form-label">Apellido Paterno</label>
+          <input type="text" class="form-control" id="eap" placeholder="Apellido Paterno">
+        </div>
+        <div class="mb-3">
+          <label for="am" class="form-label">Apellido Materno</label>
+          <input type="text" class="form-control" id="eam" placeholder="Apellido Materno">
+        </div>
+        <div class="mb-3">
+          <label for="tel" class="form-label">Teléfono</label>
+          <input type="tel" class="form-control" id="etelefono" placeholder="Teléfono">
+        </div>
+        <div class="mb-3">
+          <label for="correo" class="form-label">Correo Electrónico</label>
+          <input type="email" class="form-control" id="ecorreo" placeholder="example@dominio.com">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <input type="hidden" id="contactoid">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+          <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+        </svg> Cancelar</button>
+        <button type="button" class="btn btn-primary" onclick="editarContacto()"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+          <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+          <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+        </svg> Guardar</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap.bundle.js"></script>
      <script src="js/sweetalert2.all.min.js"></script>
