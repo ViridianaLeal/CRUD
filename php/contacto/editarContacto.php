@@ -21,7 +21,7 @@ if($_POST){
         WHERE contactoid=$id";
         if($cx->query($sqlEditar)===true){
             $valido['success']=true;
-            $valido['mensaje']="SE ACCTUALIZO CORRECTAMENTE";
+            $valido['mensaje']="SE ACTUALIZO CORRECTAMENTE";
         }else{
             $valido['success']=false;
             $valido['mensaje']="ERROR NO SE GUARDO";
