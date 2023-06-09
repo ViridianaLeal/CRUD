@@ -154,12 +154,12 @@ const cargarDato=async(datosid)=>{
   
     var resultado=await respuesta.json();
 
-    document.querySelector("#datosid").value=resultado.contactoid;
-    document.querySelector("#enombreC").value=resultado.nombre;
-    document.querySelector("#eedad").value=resultado.ap;
-    document.querySelector("#ealtura").value=resultado.am;
-    document.querySelector("#esexo").value=resultado.telefono;
-    document.querySelector("#enacionalidad").value=resultado.correo;
+    document.querySelector("#datosid").value=resultado.datosid;
+    document.querySelector("#enombreC").value=resultado.nombreC;
+    document.querySelector("#eedad").value=resultado.edad;
+    document.querySelector("#ealtura").value=resultado.altura;
+    document.querySelector("#esexo").value=resultado.sexo;
+    document.querySelector("#enacionalidad").value=resultado.nacionalidad;
 }
 
 const editarDato=async()=>{

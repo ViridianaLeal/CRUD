@@ -6,7 +6,7 @@ $valido['success']=array('success'=>false,'mensaje'=>"");
 
 if($_POST){
     $id=$_POST['datosid'];
-    $nombrec=$_POST['nombreC'];
+    $nombreC=$_POST['nombreC'];
     $edad=$_POST['edad'];
     $altura=$_POST['altura'];
     $sexo=$_POST['sexo'];

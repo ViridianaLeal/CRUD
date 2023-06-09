@@ -57,7 +57,7 @@ const registrarUsuario=async()=>{
           return;
 
     }
-//Insertar a la BASE DE ATOS
+//Insertar a la BASE DE DATOS
     const datos=new FormData();
     datos.append("correo",correo);
     datos.append("password",password);
