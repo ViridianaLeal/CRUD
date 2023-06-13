@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <title>Auto</title>
+</head>
+<body onload="cargarAutos();checarSesion();">
+  <nav class="navbar bg-primary text-white fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand text-white" href="#">CRUD CECYTEM</a>
+      <button class="btn btn-primary" id="usuario" href="#">CRUD CECYTEM</button>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menú</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="btn " href="inicio.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                    <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                  </svg> Inicio</a>
+                </li>
+                
+                </li>
+              </ul>
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="btn " href="datos.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                  </svg> Datos</a>
+                </li>
+                
+                </li>
+              </ul>
+              
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <button class="nav-link active" onclick="cerrarSesion()" aria-current="page" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+                <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+              </svg> Cerrar sesión</button>
+            </li>
+            
+            </li>
+          </ul>
+         
+        
+        </div>
+      </div>
+    </div>
+  </nav>
+      <div class="container " style="margin-top: 100px;">
+        <div class="card text-center">
+            <div class="card-header">
+            AUTO
+            </div>
+            <div class="card-body">
+
+<div style="text-align: right;" class="mb-2">
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarModal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-car-front" viewBox="0 0 16 16">
+      <path d="M4 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm10 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2H6ZM4.862 4.276 3.906 6.19a.51.51 0 0 0 .497.731c.91-.073 2.35-.17 3.597-.17 1.247 0 2.688.097 3.597.17a.51.51 0 0 0 .497-.731l-.956-1.913A.5.5 0 0 0 10.691 4H5.309a.5.5 0 0 0-.447.276Z"/>
+      <path d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679c.033.161.049.325.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.807.807 0 0 0 .381-.404l.792-1.848ZM4.82 3a1.5 1.5 0 0 0-1.379.91l-.792 1.847a1.8 1.8 0 0 1-.853.904.807.807 0 0 0-.43.564L1.03 8.904a1.5 1.5 0 0 0-.03.294v.413c0 .796.62 1.448 1.408 1.484 1.555.07 3.786.155 5.592.155 1.806 0 4.037-.084 5.592-.155A1.479 1.479 0 0 0 15 9.611v-.413c0-.099-.01-.197-.03-.294l-.335-1.68a.807.807 0 0 0-.43-.563 1.807 1.807 0 0 1-.853-.904l-.792-1.848A1.5 1.5 0 0 0 11.18 3H4.82Z"/>
+    </svg> Agregar Auto </button>
+</div>
+<table class="table  table-hover">
+  <thead class="table-dark">
+  <tr>
+    <td>Marca</td>
+    <td>Modelo</td>
+    <td>Color</td>
+    <td>Año</td>
+    <td>Costo</td>
+    <td>Editar</td>
+    <td>Eliminar</td>
+  </tr>
+</thead>
+<tbody id="registrosD">
+  
+</tbody>
+</table>
+</div>
+            <div class="card-footer text-body-secondary">
+            Grupo 405
+            </div>
+            </div>
+      </div>
+
+     
+
+<!--  agregar autoModal -->
+<div class="modal fade" id="agregarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">AGREGAR AUTO</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <form id="formAgregar">
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Marca</label>
+          <input type="text" class="form-control" id="marca" placeholder="Marca">
+        </div>
+        <div class="mb-3">
+          <label for="ap" class="form-label">Modelo</label>
+          <input type="text" class="form-control" id="modelo" placeholder="Modelo">
+        </div>
+        <div class="mb-3">
+          <label for="am" class="form-label">Color</label><br>
+          <select name="" id="color" class="form-select" aria-label="Default select example">
+            <option value="blanco" id="blanco">Blanco</option>
+            <option value="azul" id="azul">Azul</option>
+            <option value="negro" id="negro">Negro</option>
+            <option value="rojo" id="rojo">Rojo</option>
+            <option value="verde" id="verde">Verde</option>
+            <option value="gris" id="gris">Gris</option>
+          </select>
+          
+        </div>
+        <div class="mb-3">
+          <label for="tel" class="form-label">Año</label> <br>
+          <select name="" id="año" class="form-select" aria-label="Default select example">
+            <option value="2000" id="2000">2000</option>
+            <option value="2001" id="2001">2001</option>
+            <option value="2002" id="2002">2002</option>
+            <option value="2003" id="2003">2003</option>
+            <option value="2004" id="2004">2004</option>
+            <option value="2005" id="2005">2005</option>
+            <option value="2006" id="2006">2006</option>
+            <option value="2007" id="2007">2007</option>
+            <option value="2008" id="2008">2008</option>
+            <option value="2009" id="2009">2009</option>
+            <option value="2010" id="2010">2010</option>
+            <option value="2011" id="2011">2011</option>
+            <option value="2012" id="2012">2012</option>
+            <option value="2013" id="2013">2013</option>
+            <option value="2014" id="2014">2014</option>
+            <option value="2015" id="2015">2015</option>
+            <option value="2016" id="2016">2016</option>
+            <option value="2017" id="2017">2017</option>
+            <option value="2018" id="2018">2018</option>
+            <option value="2019" id="2019">2019</option>
+            <option value="2020" id="2020">2020</option>
+            <option value="2021" id="2021">2021</option>
+            <option value="2022" id="2022">2022</option>
+            <option value="2023" id="2023">2023</option>
+            <option value="2024" id="2024">2024</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="correo" class="form-label">Costo</label>
+          <input type="text" class="form-control" id="costo" placeholder="Costo">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+          <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+        </svg> Cancelar</button>
+        <button type="button" class="btn btn-primary" onclick="agregarAuto()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+          <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+          <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+        </svg> Guardar</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+<!--  editar autoModal -->
+<div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">EDITAR</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <form id="formEditar">
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Marca</label>
+          <input type="text" class="form-control" id="emarca" placeholder="Marca">
+        </div>
+        <div class="mb-3">
+          <label for="ap" class="form-label">Modelo</label>
+          <input type="text" class="form-control" id="emodelo" placeholder="Modelo">
+        </div>
+        <div class="mb-3">
+          <label for="am" class="form-label">Color</label><br>
+          <select name="" id="ecolor" class="form-select" aria-label="Default select example">
+            <option value="blanco" id="blanco">Blanco</option>
+            <option value="azul" id="azul">Azul</option>
+            <option value="negro" id="negro">Negro</option>
+            <option value="rojo" id="rojo">Rojo</option>
+            <option value="verde" id="verde">Verde</option>
+            <option value="gris" id="gris">Gris</option>
+          </select>
+          
+        </div>
+        <div class="mb-3">
+          <label for="tel" class="form-label">Año</label> <br>
+          <select name="" id="eaño" class="form-select" aria-label="Default select example">
+            <option value="2000" id="e2000">2000</option>
+            <option value="2001" id="e2001">2001</option>
+            <option value="2002" id="e2002">2002</option>
+            <option value="2003" id="e2003">2003</option>
+            <option value="2004" id="e2004">2004</option>
+            <option value="2005" id="e2005">2005</option>
+            <option value="2006" id="e2006">2006</option>
+            <option value="2007" id="e2007">2007</option>
+            <option value="2008" id="e2008">2008</option>
+            <option value="2009" id="e2009">2009</option>
+            <option value="2010" id="e2010">2010</option>
+            <option value="2011" id="e2011">2011</option>
+            <option value="2012" id="e2012">2012</option>
+            <option value="2013" id="e2013">2013</option>
+            <option value="2014" id="e2014">2014</option>
+            <option value="2015" id="e2015">2015</option>
+            <option value="2016" id="e2016">2016</option>
+            <option value="2017" id="e2017">2017</option>
+            <option value="2018" id="e2018">2018</option>
+            <option value="2019" id="e2019">2019</option>
+            <option value="2020" id="e2020">2020</option>
+            <option value="2021" id="e2021">2021</option>
+            <option value="2022" id="e2022">2022</option>
+            <option value="2023" id="e2023">2023</option>
+            <option value="2024" id="e2024">2024</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="correo" class="form-label">Costo</label>
+          <input type="text" class="form-control" id="ecosto" placeholder="Costo">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <input type="hidden" id="datosid">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+          <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+        </svg> Cancelar</button>
+        <button type="button" class="btn btn-primary" onclick="editarAuto()"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+          <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+          <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+        </svg> Guardar</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.18/dist/sweetalert2.all.min.js"></script>
+     <script src="js/appAuto.js"></script>
+</body>
+</html>
