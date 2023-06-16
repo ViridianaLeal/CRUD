@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <title>Alumno</title>
+</head>
+<body onload="cargarAlumnos();checarSesion();">
+  <nav class="navbar bg-primary text-white fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand text-white" href="#">CRUD CECYTEM</a>
+      <button class="btn btn-primary" id="usuario" href="#">CRUD CECYTEM</button>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menú</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="btn " href="inicio.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                    <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                  </svg> Inicio</a>
+                </li>
+                
+                </li>
+              </ul>
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="btn " href="datos.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                  </svg> Datos</a>
+                </li>
+                
+                </li>
+              </ul>
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="btn " href="auto.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-car-front-fill" viewBox="0 0 16 16">
+                    <path d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679c.033.161.049.325.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.807.807 0 0 0 .381-.404l.792-1.848ZM3 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2H6ZM2.906 5.189a.51.51 0 0 0 .497.731c.91-.073 3.35-.17 4.597-.17 1.247 0 3.688.097 4.597.17a.51.51 0 0 0 .497-.731l-.956-1.913A.5.5 0 0 0 11.691 3H4.309a.5.5 0 0 0-.447.276L2.906 5.19Z"/>
+                  </svg> Auto</a>
+                </li>
+                
+                </li>
+              </ul>
+              
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <button class="nav-link active" onclick="cerrarSesion()" aria-current="page" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+                <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+              </svg> Cerrar sesión</button>
+            </li>
+            
+            </li>
+          </ul>
+         
+        
+        </div>
+      </div>
+    </div>
+  </nav>
+      <div class="container " style="margin-top: 100px;">
+        <div class="card text-center">
+            <div class="card-header">
+            ALUMNO
+            </div>
+            <div class="card-body">
+
+<div style="text-align: right;" class="mb-2">
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarModal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-video" viewBox="0 0 16 16">
+      <path d="M8 9.05a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+      <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2Zm10.798 11c-.453-1.27-1.76-3-4.798-3-3.037 0-4.345 1.73-4.798 3H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-1.202Z"/>
+    </svg> Agregar Alumno </button>
+</div>
+<table class="table  table-hover">
+  <thead class="table-dark">
+  <tr>
+    <td>Número Control</td>
+    <td>Nombre</td>
+    <td>Fecha Nacimiento</td>
+    <td>Grupo</td>
+    <td>Carrera</td>
+    <td>Editar</td>
+    <td>Eliminar</td>
+  </tr>
+</thead>
+<tbody id="registros">
+  
+</tbody>
+</table>
+</div>
+            <div class="card-footer text-body-secondary">
+            Grupo 405
+            </div>
+            </div>
+      </div>
+
+     
+
+<!--  agregar autoModal -->
+<div class="modal fade" id="agregarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">AGREGAR ALUMNO</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <form id="formAgregar">
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Número Control</label>
+          <input type="number" class="form-control" id="numC" placeholder="Número de Control">
+        </div>
+        <div class="mb-3">
+          <label for="ap" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+        </div>
+        <div class="mb-3">
+          <label for="am" class="form-label">Fecha de Nacimiento</label><br>
+          <input type="date" class="form-control" id="fechaN" placeholder="Fecha de Nacimiento">
+          
+          
+        </div>
+        <div class="mb-3">
+          <label for="tel" class="form-label">Grupo</label> <br>
+          <select name="" id="grupo" class="form-select" aria-label="Default select example">
+            <option value="101" id="101">101</option>
+            <option value="102" id="102">102</option>
+            <option value="103" id="103">103</option>
+            <option value="104" id="104">104</option>
+            <option value="105" id="105">105</option>
+            <option value="106" id="106">106</option>
+            <option value="107" id="107">107</option>
+            <option value="108" id="108">108</option>
+            <option value="109" id="109">109</option>
+            <option value="110" id="110">110</option>
+            <option value="111" id="111">111</option>
+            <option value="112" id="112">112</option>
+            <option value="113" id="113">113</option>
+            <option value="201" id="201">201</option>
+            <option value="202" id="202">202</option>
+            <option value="203" id="203">203</option>
+            <option value="204" id="204">204</option>
+            <option value="205" id="205">205</option>
+            <option value="206" id="206">206</option>
+            <option value="207" id="207">207</option>
+            <option value="208" id="208">208</option>
+            <option value="209" id="209">209</option>
+            <option value="210" id="210">210</option>
+            <option value="211" id="211">211</option>
+            <option value="212" id="212">212</option>
+            <option value="213" id="213">213</option>
+            <option value="301" id="301">301</option>
+            <option value="302" id="302">302</option>
+            <option value="303" id="303">303</option>
+            <option value="304" id="304">304</option>
+            <option value="305" id="305">305</option>
+            <option value="306" id="306">306</option>
+            <option value="307" id="307">307</option>
+            <option value="308" id="308">308</option>
+            <option value="309" id="309">309</option>
+            <option value="310" id="310">310</option>
+            <option value="311" id="311">311</option>
+            <option value="312" id="312">312</option>
+            <option value="313" id="313">313</option>
+            <option value="401" id="401">401</option>
+            <option value="402" id="402">402</option>
+            <option value="403" id="403">403</option>
+            <option value="404" id="404">404</option>
+            <option value="405" id="405">405</option>
+            <option value="406" id="406">406</option>
+            <option value="407" id="407">407</option>
+            <option value="408" id="408">408</option>
+            <option value="409" id="409">409</option>
+            <option value="410" id="410">410</option>
+            <option value="411" id="411">411</option>
+            <option value="412" id="412">412</option>
+            <option value="413" id="413">413</option>
+            <option value="501" id="501">501</option>
+            <option value="502" id="502">502</option>
+            <option value="503" id="503">503</option>
+            <option value="504" id="504">504</option>
+            <option value="505" id="505">505</option>
+            <option value="506" id="506">506</option>
+            <option value="507" id="507">507</option>
+            <option value="508" id="508">508</option>
+            <option value="509" id="509">509</option>
+            <option value="510" id="510">510</option>
+            <option value="511" id="511">511</option>
+            <option value="512" id="512">512</option>
+            <option value="513" id="513">513</option>
+            <option value="601" id="601">601</option>
+            <option value="602" id="602">602</option>
+            <option value="603" id="603">603</option>
+            <option value="604" id="604">604</option>
+            <option value="605" id="605">605</option>
+            <option value="606" id="606">606</option>
+            <option value="607" id="607">607</option>
+            <option value="608" id="608">608</option>
+            <option value="609" id="609">609</option>
+            <option value="610" id="610">610</option>
+            <option value="611" id="611">611</option>
+            <option value="612" id="612">612</option>
+            <option value="613" id="613">613</option>
+            
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="correo" class="form-label">Carrera</label>
+          <select name="" id="carrera" class="form-select" aria-label="Default select example">
+            <option value="ventas" id="ventas">Ventas</option>
+            <option value="programacion" id="programacion">Programación</option>
+            <option value="maquinaH" id="maquinaH">Maquínas y Herramientas</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+          <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+        </svg> Cancelar</button>
+        <button type="button" class="btn btn-primary" onclick="agregarAlumno()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+          <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+          <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+        </svg> Guardar</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+<!--  editar autoModal -->
+<div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">EDITAR</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <form id="formEditar">
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Número Control</label>
+          <input type="number" class="form-control" id="enumC" placeholder="Número de Control">
+        </div>
+        <div class="mb-3">
+          <label for="ap" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="enombre" placeholder="Nombre">
+        </div>
+        <div class="mb-3">
+          <label for="am" class="form-label">Fecha de Nacimiento</label><br>
+          <input type="date" class="form-control" id="efechaN" placeholder="Fecha de Nacimiento">
+          
+          
+        </div>
+        <div class="mb-3">
+          <label for="tel" class="form-label">Grupo</label> <br>
+          <select name="" id="egrupo" class="form-select" aria-label="Default select example">
+            <option value="101" id="101">101</option>
+            <option value="102" id="102">102</option>
+            <option value="103" id="103">103</option>
+            <option value="104" id="104">104</option>
+            <option value="105" id="105">105</option>
+            <option value="106" id="106">106</option>
+            <option value="107" id="107">107</option>
+            <option value="108" id="108">108</option>
+            <option value="109" id="109">109</option>
+            <option value="110" id="110">110</option>
+            <option value="111" id="111">111</option>
+            <option value="112" id="112">112</option>
+            <option value="113" id="113">113</option>
+            <option value="201" id="201">201</option>
+            <option value="202" id="202">202</option>
+            <option value="203" id="203">203</option>
+            <option value="204" id="204">204</option>
+            <option value="205" id="205">205</option>
+            <option value="206" id="206">206</option>
+            <option value="207" id="207">207</option>
+            <option value="208" id="208">208</option>
+            <option value="209" id="209">209</option>
+            <option value="210" id="210">210</option>
+            <option value="211" id="211">211</option>
+            <option value="212" id="212">212</option>
+            <option value="213" id="213">213</option>
+            <option value="301" id="301">301</option>
+            <option value="302" id="302">302</option>
+            <option value="303" id="303">303</option>
+            <option value="304" id="304">304</option>
+            <option value="305" id="305">305</option>
+            <option value="306" id="306">306</option>
+            <option value="307" id="307">307</option>
+            <option value="308" id="308">308</option>
+            <option value="309" id="309">309</option>
+            <option value="310" id="310">310</option>
+            <option value="311" id="311">311</option>
+            <option value="312" id="312">312</option>
+            <option value="313" id="313">313</option>
+            <option value="401" id="401">401</option>
+            <option value="402" id="402">402</option>
+            <option value="403" id="403">403</option>
+            <option value="404" id="404">404</option>
+            <option value="405" id="405">405</option>
+            <option value="406" id="406">406</option>
+            <option value="407" id="407">407</option>
+            <option value="408" id="408">408</option>
+            <option value="409" id="409">409</option>
+            <option value="410" id="410">410</option>
+            <option value="411" id="411">411</option>
+            <option value="412" id="412">412</option>
+            <option value="413" id="413">413</option>
+            <option value="501" id="501">501</option>
+            <option value="502" id="502">502</option>
+            <option value="503" id="503">503</option>
+            <option value="504" id="504">504</option>
+            <option value="505" id="505">505</option>
+            <option value="506" id="506">506</option>
+            <option value="507" id="507">507</option>
+            <option value="508" id="508">508</option>
+            <option value="509" id="509">509</option>
+            <option value="510" id="510">510</option>
+            <option value="511" id="511">511</option>
+            <option value="512" id="512">512</option>
+            <option value="513" id="513">513</option>
+            <option value="601" id="601">601</option>
+            <option value="602" id="602">602</option>
+            <option value="603" id="603">603</option>
+            <option value="604" id="604">604</option>
+            <option value="605" id="605">605</option>
+            <option value="606" id="606">606</option>
+            <option value="607" id="607">607</option>
+            <option value="608" id="608">608</option>
+            <option value="609" id="609">609</option>
+            <option value="610" id="610">610</option>
+            <option value="611" id="611">611</option>
+            <option value="612" id="612">612</option>
+            <option value="613" id="613">613</option>
+            
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="correo" class="form-label">Carrera</label>
+          <select name="" id="ecarrera" class="form-select" aria-label="Default select example">
+            <option value="ventas" id="ventas">Ventas</option>
+            <option value="programacion" id="programacion">Programación</option>
+            <option value="maquinaH" id="maquinaH">Maquínas y Herramientas</option>
+          </select>
+        </div>
+        
+      </div>
+      <div class="modal-footer">
+        <input type="hidden" id="alumnoid">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+          <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+        </svg> Cancelar</button>
+        <button type="button" class="btn btn-primary" onclick="editarAlumno()"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+          <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+          <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+        </svg> Guardar</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.18/dist/sweetalert2.all.min.js"></script>
+     <script src="js/appAlumno.js"></script>
+</body>
+</html>
